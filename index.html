@@ -47,20 +47,19 @@
         <button class="logo__burger" id="burger" aria-label="Меню">
           <svg class="icon" viewBox="0 0 24 24" style="width:26px;height:26px"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
         </button>
-        <span class="logobar__rule"></span>
-        <a href="index.html" class="logo">
+        <a href="index.html" class="logo logo--mobile">
           <span class="logo__cross">☦</span>
           <span class="logo__text">Рогожская Лавка</span>
-        </a>
-        <span class="logobar__rule"></span>
-        <a href="cart.html" class="icon-btn logo__burger" style="color:var(--bordo)" aria-label="Корзина">
-          <svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
         </a>
       </div>
     </div>
 
     <nav class="nav">
-      <div class="container">
+      <div class="container nav__inner">
+        <a href="index.html" class="logo logo--nav">
+          <span class="logo__cross">☦</span>
+          <span class="logo__text">Рогожская Лавка</span>
+        </a>
         <ul class="nav__list">
           <li><a href="index.html" class="nav__link is-active">Главная</a></li>
           <li><a href="catalog.html" class="nav__link">Каталог</a></li>
@@ -77,68 +76,69 @@
     <div class="container layout__grid">
 
       <!-- Sidebar -->
-      <aside class="sidebar">
+      <aside class="sidebar sidebar--home-catalog">
         <div class="sidebar__title"><a href="catalog.html" style="color:inherit">Каталог</a></div>
-        <nav class="catmenu">
-          <div class="catmenu__item">
-            <a href="category.html" class="catmenu__head" data-cat="ikony"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg><span class="catmenu__label">Иконы</span></a>
+        <nav class="catmenu catmenu--accordion">
+          <div class="catmenu__item is-expanded" data-cat="ikony">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="ikony" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg><span class="catmenu__label">Иконы</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?sub=spasitel" data-sub="spasitel">Образ Спасителя</a>
-              <a href="category.html?sub=bogorodichnye" data-sub="bogorodichnye">Богородичные</a>
-              <a href="category.html?sub=prazdnichnye" data-sub="prazdnichnye">Праздничные</a>
-              <a href="category.html?sub=svyatye" data-sub="svyatye">Святые</a>
-              <a href="category.html?sub=skladni" data-sub="skladni">Складни</a>
+              <a href="category.html?sub=spasitel" class="catmenu__sub-link" data-sub="spasitel">Образ Спасителя</a>
+              <a href="category.html?sub=bogorodichnye" class="catmenu__sub-link" data-sub="bogorodichnye">Богородичные</a>
+              <a href="category.html?sub=prazdnichnye" class="catmenu__sub-link" data-sub="prazdnichnye">Праздничные</a>
+              <a href="category.html?sub=svyatye" class="catmenu__sub-link" data-sub="svyatye">Святые</a>
+              <a href="category.html?sub=skladni" class="catmenu__sub-link catmenu__sub-link--extra" data-sub="skladni">Складни</a>
+              <button type="button" class="catmenu__all catmenu__all--toggle" aria-expanded="false">Показать всё</button>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=knigi" class="catmenu__head" data-cat="knigi"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 3v18"/></svg><span class="catmenu__label">Книги</span></a>
+          <div class="catmenu__item is-expanded" data-cat="knigi">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="knigi" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 3v18"/></svg><span class="catmenu__label">Книги</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=knigi&sub=bogosluzhebnye" data-sub="bogosluzhebnye">Богослужебные книги</a>
-              <a href="category.html?cat=knigi&sub=psaltiri" data-sub="psaltiri">Псалтири и молитвословы</a>
-              <a href="category.html?cat=knigi&sub=istoriya" data-sub="istoriya">История старообрядчества</a>
+              <a href="category.html?cat=knigi&sub=bogosluzhebnye" class="catmenu__sub-link" data-sub="bogosluzhebnye">Богослужебные книги</a>
+              <a href="category.html?cat=knigi&sub=psaltiri" class="catmenu__sub-link" data-sub="psaltiri">Псалтири и молитвословы</a>
+              <a href="category.html?cat=knigi&sub=istoriya" class="catmenu__sub-link" data-sub="istoriya">История старообрядчества</a>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=odezhda" class="catmenu__head" data-cat="odezhda"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M16 4 12 7 8 4 3 7l3 3v10h12V10l3-3z"/></svg><span class="catmenu__label">Одежда</span></a>
+          <div class="catmenu__item is-expanded" data-cat="odezhda">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="odezhda" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M16 4 12 7 8 4 3 7l3 3v10h12V10l3-3z"/></svg><span class="catmenu__label">Одежда</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=odezhda&sub=kosovorotki" data-sub="kosovorotki">Косоворотки</a>
-              <a href="category.html?cat=odezhda&sub=platki" data-sub="platki">Платки</a>
+              <a href="category.html?cat=odezhda&sub=kosovorotki" class="catmenu__sub-link" data-sub="kosovorotki">Косоворотки</a>
+              <a href="category.html?cat=odezhda&sub=platki" class="catmenu__sub-link" data-sub="platki">Платки</a>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=domashnyaya" class="catmenu__head" data-cat="domashnyaya"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M8 3h8l-1 5a4 4 0 0 1 0 8l1 5H8l1-5a4 4 0 0 1 0-8z"/></svg><span class="catmenu__label">Домашняя утварь</span></a>
+          <div class="catmenu__item is-expanded" data-cat="domashnyaya">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="domashnyaya" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M8 3h8l-1 5a4 4 0 0 1 0 8l1 5H8l1-5a4 4 0 0 1 0-8z"/></svg><span class="catmenu__label">Домашняя утварь</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=domashnyaya&sub=lampady" data-sub="lampady">Лампады</a>
-              <a href="category.html?cat=domashnyaya&sub=podsvechniki" data-sub="podsvechniki">Подсвечники</a>
-              <a href="category.html?cat=domashnyaya&sub=kioty" data-sub="kioty">Киоты</a>
+              <a href="category.html?cat=domashnyaya&sub=lampady" class="catmenu__sub-link" data-sub="lampady">Лампады</a>
+              <a href="category.html?cat=domashnyaya&sub=podsvechniki" class="catmenu__sub-link" data-sub="podsvechniki">Подсвечники</a>
+              <a href="category.html?cat=domashnyaya&sub=kioty" class="catmenu__sub-link" data-sub="kioty">Киоты</a>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=svechi" class="catmenu__head" data-cat="svechi"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M12 2c1.5 2 3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 1.5-4 3-6z"/><path d="M9 13h6v8H9z"/></svg><span class="catmenu__label">Свечи и ладан</span></a>
+          <div class="catmenu__item is-expanded" data-cat="svechi">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="svechi" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M12 2c1.5 2 3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 1.5-4 3-6z"/><path d="M9 13h6v8H9z"/></svg><span class="catmenu__label">Свечи и ладан</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=svechi&sub=voskovye" data-sub="voskovye">Свечи восковые</a>
-              <a href="category.html?cat=svechi&sub=ladan" data-sub="ladan">Ладан</a>
+              <a href="category.html?cat=svechi&sub=voskovye" class="catmenu__sub-link" data-sub="voskovye">Свечи восковые</a>
+              <a href="category.html?cat=svechi&sub=ladan" class="catmenu__sub-link" data-sub="ladan">Ладан</a>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=lestovki" class="catmenu__head" data-cat="lestovki"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><span class="catmenu__label">Лестовки</span></a>
+          <div class="catmenu__item is-expanded" data-cat="lestovki">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="lestovki" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><span class="catmenu__label">Лестовки</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=lestovki&sub=kozhanye" data-sub="kozhanye">Кожаные</a>
-              <a href="category.html?cat=lestovki&sub=bisernye" data-sub="bisernye">Бисерные</a>
+              <a href="category.html?cat=lestovki&sub=kozhanye" class="catmenu__sub-link" data-sub="kozhanye">Кожаные</a>
+              <a href="category.html?cat=lestovki&sub=bisernye" class="catmenu__sub-link" data-sub="bisernye">Бисерные</a>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=kresty" class="catmenu__head" data-cat="kresty"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M12 2v20M7 7h10M9 12h6"/></svg><span class="catmenu__label">Нательные кресты</span></a>
+          <div class="catmenu__item is-expanded" data-cat="kresty">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="kresty" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M12 2v20M7 7h10M9 12h6"/></svg><span class="catmenu__label">Нательные кресты</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=kresty&sub=serebryanye" data-sub="serebryanye">Серебряные</a>
-              <a href="category.html?cat=kresty&sub=derevyannye" data-sub="derevyannye">Деревянные</a>
+              <a href="category.html?cat=kresty&sub=serebryanye" class="catmenu__sub-link" data-sub="serebryanye">Серебряные</a>
+              <a href="category.html?cat=kresty&sub=derevyannye" class="catmenu__sub-link" data-sub="derevyannye">Деревянные</a>
             </div>
           </div>
-          <div class="catmenu__item">
-            <a href="category.html?cat=utvar" class="catmenu__head" data-cat="utvar"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M8 3h8v4a4 4 0 0 1-8 0zM12 11v7M8 21h8"/></svg><span class="catmenu__label">Богослужебная утварь</span></a>
+          <div class="catmenu__item is-expanded" data-cat="utvar">
+            <button type="button" class="catmenu__head catmenu__head--toggle" data-cat="utvar" aria-expanded="true"><svg class="icon catmenu__icon" viewBox="0 0 24 24"><path d="M8 3h8v4a4 4 0 0 1-8 0zM12 11v7M8 21h8"/></svg><span class="catmenu__label">Богослужебная утварь</span><svg class="icon catmenu__chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
             <div class="catmenu__sub">
-              <a href="category.html?cat=utvar&sub=kadila" data-sub="kadila">Кадила</a>
-              <a href="category.html?cat=utvar&sub=oblacheniya" data-sub="oblacheniya">Облачения</a>
+              <a href="category.html?cat=utvar&sub=kadila" class="catmenu__sub-link" data-sub="kadila">Кадила</a>
+              <a href="category.html?cat=utvar&sub=oblacheniya" class="catmenu__sub-link" data-sub="oblacheniya">Облачения</a>
             </div>
           </div>
         </nav>
@@ -201,106 +201,72 @@
         </div>
       </section>
 
-      <!-- Категории -->
-      <section class="section">
-        <div class="section__head">
-          <h2 class="section__title section__title--ornament">Категории</h2>
-        </div>
-        <div class="cat-cards">
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Иконы</div><div class="cat-card__count">189 товаров</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 3v18"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Книги</div><div class="cat-card__count">156 товаров</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M16 4 12 7 8 4 3 7l3 3v10h12V10l3-3z"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Одежда</div><div class="cat-card__count">64 товара</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8l-1 5a4 4 0 0 1 0 8l1 5H8l1-5a4 4 0 0 1 0-8z"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Домашняя утварь</div><div class="cat-card__count">120 товаров</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2c1.5 2 3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 1.5-4 3-6z"/><path d="M9 13h6v8H9z"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Свечи и ладан</div><div class="cat-card__count">85 товаров</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Лестовки</div><div class="cat-card__count">32 товара</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M7 7h10M9 12h6"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Нательные кресты</div><div class="cat-card__count">76 товаров</div></div>
-          </a>
-          <a class="cat-card" href="category.html">
-            <div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8v4a4 4 0 0 1-8 0zM12 11v7M8 21h8"/></svg></div>
-            <div class="cat-card__body"><div class="cat-card__title">Богослужебная утварь</div><div class="cat-card__count">45 товаров</div></div>
-          </a>
-        </div>
-      </section>
-
-      <!-- Популярные товары -->
-      <section class="section">
-        <div class="section__head">
-          <h2 class="section__title section__title--ornament">Популярные товары</h2>
-        </div>
-        <div class="product-grid product-grid--4">
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Икона «Господь Вседержитель»</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★★</span> (34)</span>
-              <div class="card__price">15 800 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Псалтирь. Крупный шрифт</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★★</span> (128)</span>
-              <div class="card__price">950 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Свечи восковые №40</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★☆</span> (52)</span>
-              <div class="card__price">120 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Лестовка кожаная</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★★</span> (76)</span>
-              <div class="card__price">2 450 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
+      <section class="section section--home-catalog">
+        <div class="home-catalog-nav" id="homeCatalogNav" hidden></div>
+        <div class="home-cat-panel is-overview" id="homeCatalogPanel">
+          <div class="home-cat-rows">
+            <section class="home-cat-row" data-cat="ikony" data-section-name="Иконы" id="home-cat-ikony">
+              <h3 class="home-cat-row__title"><a href="category.html">Иконы</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?sub=spasitel"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Образ Спасителя</div><div class="cat-card__count">42 товара</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?sub=bogorodichnye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Богородичные</div><div class="cat-card__count">38 товаров</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?sub=prazdnichnye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Праздничные</div><div class="cat-card__count">31 товар</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?sub=svyatye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Святые</div><div class="cat-card__count">56 товаров</div></div></a>
+                <a class="cat-card cat-card--compact cat-card--extra" href="category.html?sub=skladni"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3v18M7 8h10M9 13h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Складни</div><div class="cat-card__count">22 товара</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="knigi" data-section-name="Книги" id="home-cat-knigi">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=knigi">Книги</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=knigi&sub=bogosluzhebnye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 3v18"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Богослужебные книги</div><div class="cat-card__count">48 товаров</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=knigi&sub=psaltiri"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 3v18"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Псалтири и молитвословы</div><div class="cat-card__count">36 товаров</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=knigi&sub=istoriya"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2z"/><path d="M9 3v18"/></svg></div><div class="cat-card__body"><div class="cat-card__title">История старообрядчества</div><div class="cat-card__count">12 товаров</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="odezhda" data-section-name="Одежда" id="home-cat-odezhda">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=odezhda">Одежда</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=odezhda&sub=kosovorotki"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M16 4 12 7 8 4 3 7l3 3v10h12V10l3-3z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Косоворотки</div><div class="cat-card__count">28 товаров</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=odezhda&sub=platki"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M16 4 12 7 8 4 3 7l3 3v10h12V10l3-3z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Платки</div><div class="cat-card__count">36 товаров</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="domashnyaya" data-section-name="Домашняя утварь" id="home-cat-domashnyaya">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=domashnyaya">Домашняя утварь</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=domashnyaya&sub=lampady"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8l-1 5a4 4 0 0 1 0 8l1 5H8l1-5a4 4 0 0 1 0-8z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Лампады</div><div class="cat-card__count">34 товара</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=domashnyaya&sub=podsvechniki"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8l-1 5a4 4 0 0 1 0 8l1 5H8l1-5a4 4 0 0 1 0-8z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Подсвечники</div><div class="cat-card__count">41 товар</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=domashnyaya&sub=kioty"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8l-1 5a4 4 0 0 1 0 8l1 5H8l1-5a4 4 0 0 1 0-8z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Киоты</div><div class="cat-card__count">19 товаров</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="svechi" data-section-name="Свечи и ладан" id="home-cat-svechi">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=svechi">Свечи и ладан</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=svechi&sub=voskovye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2c1.5 2 3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 1.5-4 3-6z"/><path d="M9 13h6v8H9z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Свечи восковые</div><div class="cat-card__count">52 товара</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=svechi&sub=ladan"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2c1.5 2 3 3.5 3 6a3 3 0 0 1-6 0c0-2.5 1.5-4 3-6z"/><path d="M9 13h6v8H9z"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Ладан</div><div class="cat-card__count">33 товара</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="lestovki" data-section-name="Лестовки" id="home-cat-lestovki">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=lestovki">Лестовки</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=lestovki&sub=kozhanye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Кожаные</div><div class="cat-card__count">18 товаров</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=lestovki&sub=bisernye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Бисерные</div><div class="cat-card__count">14 товаров</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="kresty" data-section-name="Нательные кресты" id="home-cat-kresty">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=kresty">Нательные кресты</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=kresty&sub=serebryanye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M7 7h10M9 12h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Серебряные</div><div class="cat-card__count">29 товаров</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=kresty&sub=derevyannye"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M7 7h10M9 12h6"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Деревянные</div><div class="cat-card__count">47 товаров</div></div></a>
+              </div>
+            </section>
+            <section class="home-cat-row" data-cat="utvar" data-section-name="Богослужебная утварь" id="home-cat-utvar">
+              <h3 class="home-cat-row__title"><a href="category.html?cat=utvar">Богослужебная утварь</a></h3>
+              <div class="cat-cards cat-cards--home">
+                <a class="cat-card cat-card--compact" href="category.html?cat=utvar&sub=kadila"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8v4a4 4 0 0 1-8 0zM12 11v7M8 21h8"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Кадила</div><div class="cat-card__count">21 товар</div></div></a>
+                <a class="cat-card cat-card--compact" href="category.html?cat=utvar&sub=oblacheniya"><div class="cat-card__media"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8v4a4 4 0 0 1-8 0zM12 11v7M8 21h8"/></svg></div><div class="cat-card__body"><div class="cat-card__title">Облачения</div><div class="cat-card__count">24 товара</div></div></a>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
 
@@ -313,68 +279,6 @@
           </div>
           <span class="btn btn--gold btn--lg">Смотреть скидки</span>
         </a>
-      </section>
-
-      <!-- Новинки -->
-      <section class="section">
-        <div class="section__head">
-          <h2 class="section__title section__title--ornament">Новинки</h2>
-        </div>
-        <div class="product-grid product-grid--4">
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Икона «Архангел Михаил»</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★★</span> (8)</span>
-              <div class="card__price">17 200 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Кадило латунное</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★☆</span> (5)</span>
-              <div class="card__price">4 300 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Молитвослов карманный</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★★</span> (12)</span>
-              <div class="card__price">680 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <span style="font-size:64px;color:var(--gold-dark)">☦</span>
-              <button class="card__fav" aria-label="В избранное"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title"><a href="product.html">Подсвечник напрестольный</a></h3>
-              <span class="rating"><span class="rating__stars">★★★★★</span> (7)</span>
-              <div class="card__price">5 900 <small>₽</small></div>
-              <button class="btn btn--gold card__btn"><svg class="icon" viewBox="0 0 24 24" style="width:18px;height:18px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> В корзину</button>
-            </div>
-          </article>
-
-        </div>
       </section>
 
       <!-- О лавке -->
