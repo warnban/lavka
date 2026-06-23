@@ -556,7 +556,7 @@ export function pageLayout({
 <script src="assets/js/favorites.js"></script>
 ${withCatalogJs ? `<script src="assets/js/catalog.js"></script>` : ""}`;
 
-  const baseScript = `<script>(function(){var p=location.pathname,b=(p.indexOf("/lavka/")===0||p==="/lavka"||p==="/lavka/")?"/lavka/":"/";document.write('<base href="'+b+'">');})();</script>`;
+  const baseScript = `<script>(function(){var p=location.pathname,b="/",roots=["catalog","about","sale","search","personal","favorites","news","assets"];if(location.hostname.endsWith(".github.io")){var m=p.match(/^\\/([^/]+)\\//);if(m&&roots.indexOf(m[1])<0)b="/"+m[1]+"/";}else if(p.indexOf("/newlavka/")===0||p==="/newlavka"||p==="/newlavka/")b="/newlavka/";else if(p.indexOf("/lavka/")===0||p==="/lavka"||p==="/lavka/")b="/lavka/";document.write('<base href="'+b+'">');})();</script>`;
 
   return `<!DOCTYPE html>
 <html lang="ru">

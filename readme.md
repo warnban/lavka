@@ -24,11 +24,11 @@ node tools/build.mjs
 ## GitHub Pages
 
 1. Settings → Pages → Deploy from branch → `main` / root  
-2. Сайт: `https://warnban.github.io/lavka/`
+2. Сайт: `https://warnban.github.io/newlavka/` (или `https://warnban.github.io/lavka/`)
 
-В `<head>` всех страниц стоит `<base href="/lavka/">` — пути рассчитаны на project site.
+`<base href>` определяется автоматически по пути GitHub Pages (`/newlavka/`, `/lavka/` и т.д.).
 
-Для сборки под корень домена: `SITE_BASE=/ node tools/build.mjs`
+Для сборки под фиксированный префикс: `SITE_BASE=/newlavka/ node tools/build.mjs`
 
 ## Структура URL (как на Bitrix)
 
