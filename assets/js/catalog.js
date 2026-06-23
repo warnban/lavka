@@ -217,6 +217,7 @@
       this.buybarHost.dataset.addLabel = config.buyLabel || "В корзину";
       this.refreshBuybarHost();
     }
+    scheduleProductBuyLayout(this.root);
   }
 
   Product.prototype.getCurrentProductId = function () {
@@ -296,11 +297,13 @@
     if (!canBuy) {
       this.cartHost.innerHTML =
         '<span class="btn btn--gold" style="opacity:.6;pointer-events:none">Нет в наличии</span>';
+      scheduleProductBuyLayout(this.root);
       return;
     }
     mountControl(this.cartHost, productId, getQty(productId), {
       addLabel: "В корзину",
     });
+    scheduleProductBuyLayout(this.root);
   };
 
   Product.prototype.refreshBuybarHost = function () {
@@ -342,19 +345,67 @@
   };
 
   function formatPriceHtml(pricePrint, oldPricePrint) {
-    let html = pricePrint ? pricePrint.replace(/\s*₽\s*$/, "").trim() : "";
-    if (!html) return "";
-    html += " <small>₽</small>";
+    const price = pricePrint ? pricePrint.replace(/\s*₽\s*$/, "").trim() : "";
+    if (!price) return "";
+    let html = "";
     if (oldPricePrint) {
-      html += ' <span class="card__price-old">' + oldPricePrint + "</span>";
+      const oldPrice = oldPricePrint.replace(/\s*₽\s*$/, "").trim();
+      if (oldPrice) {
+        html += '<span class="card__price-old">' + oldPrice + " ₽</span>";
+      }
     }
+    html += '<span class="product__price-current">' + price + " <small>₽</small></span>";
     return html;
+  }
+
+  function syncProductBuyLayout(scope) {
+    const root = scope && scope.querySelector ? scope : document;
+
+    root.querySelectorAll(".product__buy").forEach((buy) => {
+      const actions = buy.querySelector(".product__actions");
+      const delivery = buy.querySelector(".delivery-note");
+      if (!actions || !delivery) return;
+      delivery.style.removeProperty("width");
+      const width = Math.ceil(actions.getBoundingClientRect().width);
+      if (width > 0) {
+        delivery.style.width = width + "px";
+      }
+    });
+
+    root.querySelectorAll(".product__info").forEach((info) => {
+      if (info.querySelector(".product__buy")) return;
+      const actions = info.querySelector(":scope > .product__actions");
+      const delivery = info.querySelector(":scope > .delivery-note");
+      if (!actions || !delivery) return;
+      delivery.style.removeProperty("width");
+      const width = Math.ceil(actions.getBoundingClientRect().width);
+      if (width > 0) {
+        delivery.style.width = width + "px";
+      }
+    });
+  }
+
+  function scheduleProductBuyLayout(scope) {
+    requestAnimationFrame(() => {
+      syncProductBuyLayout(scope);
+      requestAnimationFrame(() => syncProductBuyLayout(scope));
+    });
   }
 
   function initList() {
     document.querySelectorAll(".js-cart-host").forEach((host) => {
       refreshHost(host);
     });
+    scheduleProductBuyLayout();
+
+    if (!window.__rogoProductBuyResizeBound) {
+      window.__rogoProductBuyResizeBound = true;
+      let resizeTimer = 0;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => scheduleProductBuyLayout(), 100);
+      });
+    }
 
     document.addEventListener("click", (e) => {
       const addBtn = e.target.closest(".js-cart-add");
@@ -394,6 +445,7 @@
     Product: Product,
     initProduct: initProduct,
     initList: initList,
+    syncProductBuyLayout: syncProductBuyLayout,
   };
 
   if (document.readyState === "loading") {

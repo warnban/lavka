@@ -144,11 +144,133 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.setAttribute("aria-expanded", isTargetExpanded ? "true" : "false");
   };
 
+  let homeCatalogLayoutFrame = 0;
+
+  const resetHomeCatalogLayout = () => {
+    document.querySelector(".sidebar--home-catalog .catmenu")?.style.removeProperty("padding-top");
+    document.querySelectorAll(".sidebar--home-catalog .catmenu__item[data-cat]").forEach((item) => {
+      item.style.removeProperty("min-height");
+      item.style.removeProperty("padding-bottom");
+      item.style.removeProperty("margin-bottom");
+      item.querySelector(".catmenu__sub")?.style.removeProperty("padding-bottom");
+    });
+    document.querySelectorAll(".home-cat-row[data-cat]").forEach((row) => {
+      row.style.removeProperty("margin-top");
+      row.style.removeProperty("min-height");
+      row.style.removeProperty("height");
+    });
+  };
+
+  const syncHomeCatalogLayout = () => {
+    if (!document.body.classList.contains("page-home")) {
+      return;
+    }
+
+    const panel = document.getElementById("homeCatalogPanel");
+    const sidebar = document.querySelector(".sidebar--home-catalog");
+    if (!panel?.classList.contains("is-overview") || !sidebar) {
+      return;
+    }
+
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      return;
+    }
+
+    resetHomeCatalogLayout();
+
+    const rows = [...panel.querySelectorAll(".home-cat-row[data-cat]:not([hidden])")];
+    const pairs = rows
+      .map((row) => {
+        const item = sidebar.querySelector(`.catmenu__item[data-cat="${row.dataset.cat}"]`);
+        const head = item?.querySelector(".catmenu__head--toggle, .catmenu__head");
+        const cards = row.querySelector(".cat-cards--home");
+        return { row, item, head, cards };
+      })
+      .filter((pair) => pair.item && pair.head && pair.cards);
+
+    if (pairs.length === 0) {
+      return;
+    }
+
+    const catmenu = sidebar.querySelector(".catmenu");
+    const firstOffset =
+      pairs[0].cards.getBoundingClientRect().top - pairs[0].head.getBoundingClientRect().top;
+
+    if (catmenu && firstOffset > 0.5) {
+      const basePadding = parseFloat(getComputedStyle(catmenu).paddingTop) || 0;
+      catmenu.style.paddingTop = `${basePadding + firstOffset}px`;
+    }
+
+    const MIN_SECTION_GAP = 18;
+
+    const forceReflow = (node) => {
+      void node.offsetHeight;
+    };
+
+    const syncLayoutPass = () => {
+      pairs.forEach(({ item }) => {
+        item.style.marginBottom = "0px";
+        item.querySelector(".catmenu__sub")?.style.removeProperty("padding-bottom");
+      });
+
+      pairs.forEach(({ item, cards }) => {
+        const itemTop = item.getBoundingClientRect().top;
+        const cardsBottom = cards.getBoundingClientRect().bottom;
+        item.style.minHeight = `${Math.ceil(cardsBottom - itemTop)}px`;
+      });
+      forceReflow(pairs[0].item);
+
+      pairs[0].row.style.marginTop = "0px";
+
+      for (let index = 1; index < pairs.length; index += 1) {
+        const { row, item, head, cards } = pairs[index];
+        const prev = pairs[index - 1];
+
+        row.style.marginTop = "0px";
+        forceReflow(row);
+
+        const headTop = head.getBoundingClientRect().top;
+        let cardsTop = cards.getBoundingClientRect().top;
+        let rowMargin = headTop - cardsTop;
+
+        row.style.marginTop = `${Math.max(0, Math.round(rowMargin))}px`;
+        forceReflow(row);
+
+        cardsTop = cards.getBoundingClientRect().top;
+        const cardGap = cardsTop - prev.cards.getBoundingClientRect().bottom;
+
+        if (cardGap < MIN_SECTION_GAP) {
+          const extra = MIN_SECTION_GAP - cardGap;
+          rowMargin = (parseFloat(row.style.marginTop) || 0) + extra;
+          row.style.marginTop = `${Math.round(rowMargin)}px`;
+          const prevSub = prev.item.querySelector(".catmenu__sub");
+          if (prevSub) {
+            const baseSubPadding = parseFloat(getComputedStyle(prevSub).paddingBottom) || 0;
+            prevSub.style.paddingBottom = `${baseSubPadding + extra}px`;
+          }
+          forceReflow(row);
+        }
+      }
+    };
+
+    for (let pass = 0; pass < 8; pass += 1) {
+      syncLayoutPass();
+    }
+  };
+
+  const scheduleHomeCatalogLayoutSync = () => {
+    cancelAnimationFrame(homeCatalogLayoutFrame);
+    homeCatalogLayoutFrame = requestAnimationFrame(() => {
+      homeCatalogLayoutFrame = requestAnimationFrame(syncHomeCatalogLayout);
+    });
+  };
+
   const setHomeCatalogView = (catCode = "", sectionName = "", options = {}) => {
     const panel = document.getElementById("homeCatalogPanel");
     const isFilter = Boolean(catCode);
     const subExpanded = isFilter && Boolean(options.subExpanded);
-    homeCatalogFilterCat = catCode;
+    const prevFilterCat = homeCatalogFilterCat;
+    const wasFilter = Boolean(prevFilterCat);
 
     document.querySelectorAll(".sidebar--home-catalog .catmenu__item[data-cat]").forEach((item) => {
       const isTarget = isFilter && item.dataset.cat === catCode;
@@ -185,6 +307,14 @@ document.addEventListener("DOMContentLoaded", () => {
       renderHomeCatalogBreadcrumbs("expanded", sectionName);
     } else {
       renderHomeCatalogBreadcrumbs("default");
+    }
+
+    homeCatalogFilterCat = catCode;
+
+    if (!isFilter) {
+      scheduleHomeCatalogLayoutSync();
+    } else if (!wasFilter || prevFilterCat !== catCode) {
+      resetHomeCatalogLayout();
     }
   };
 
@@ -251,6 +381,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     setHomeCatalogView("", "");
+
+    let resizeTimer = 0;
+    window.addEventListener("resize", () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(scheduleHomeCatalogLayoutSync, 120);
+    });
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(scheduleHomeCatalogLayoutSync).catch(() => {});
+    }
   };
 
   initHomeCatalogView();
@@ -290,19 +430,15 @@ document.addEventListener("DOMContentLoaded", () => {
     oblacheniya: "Облачения",
   };
 
-  const catTitle = document.getElementById("catTitle");
   const catCrumb = document.getElementById("catCrumb");
-  if (catTitle) {
+  if (catCrumb) {
     const catName = CAT_NAMES[activeCat] || "Каталог";
     const subName = activeSub ? SUB_NAMES[activeSub] : null;
-    catTitle.textContent = subName || catName;
-    if (catCrumb) {
-      catCrumb.innerHTML = subName
+    catCrumb.innerHTML = subName
         ? `<a href="category.html${activeCat !== "ikony" ? `?cat=${activeCat}` : ""}">${catName}</a>
            <span class="breadcrumbs__sep">›</span>
            <span class="is-current">${subName}</span>`
         : `<span class="is-current">${catName}</span>`;
-    }
     document.title = `${subName || catName} — Каталог — Рогожская Лавка`;
   }
 

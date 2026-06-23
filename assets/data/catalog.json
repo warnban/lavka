@@ -1,0 +1,151 @@
+{
+  "products": [
+    {
+      "id": 101,
+      "name": "Икона «Господь Вседержитель»",
+      "url": "catalog/ikony/gospod-vsederzhitel/",
+      "price": 12800,
+      "pricePrint": "12 800"
+    },
+    {
+      "id": 102,
+      "name": "Икона «Казанская Божия Матерь»",
+      "url": "catalog/ikony/kazanskaya-bogoroditsa/",
+      "price": 9800,
+      "pricePrint": "9 800"
+    },
+    {
+      "id": 103,
+      "name": "Икона «Николай Чудотворец»",
+      "url": "catalog/ikony/nikolay-chudotvorets/",
+      "price": 8500,
+      "pricePrint": "8 500"
+    },
+    {
+      "id": 104,
+      "name": "Складень «Святая Троица»",
+      "url": "catalog/ikony/skladen-troitsa/",
+      "price": 24500,
+      "pricePrint": "24 500"
+    },
+    {
+      "id": 201,
+      "name": "Псалтирь толковый",
+      "url": "catalog/knigi/psaltir-tolkovy/",
+      "price": 1890,
+      "pricePrint": "1 890"
+    },
+    {
+      "id": 202,
+      "name": "Молитвослов домашний",
+      "url": "catalog/knigi/molitvoslov-domashniy/",
+      "price": 810,
+      "pricePrint": "810"
+    },
+    {
+      "id": 203,
+      "name": "Литургикон",
+      "url": "catalog/knigi/liturgikon/",
+      "price": 4200,
+      "pricePrint": "4 200"
+    },
+    {
+      "id": 204,
+      "name": "История старообрядчества",
+      "url": "catalog/knigi/istoriya-staroobryadstva/",
+      "price": 1350,
+      "pricePrint": "1 350"
+    },
+    {
+      "id": 301,
+      "name": "Косоворотка льняная",
+      "url": "catalog/odezhda/kosovorotka-lnyanaya/",
+      "price": 4900,
+      "pricePrint": "4 900"
+    },
+    {
+      "id": 302,
+      "name": "Платок праздничный",
+      "url": "catalog/odezhda/platok-prazdnichnyy/",
+      "price": 2100,
+      "pricePrint": "2 100"
+    },
+    {
+      "id": 303,
+      "name": "Туфли Ультра Лайн",
+      "url": "catalog/odezhda/tufli-ultra-layn/",
+      "price": 2799,
+      "pricePrint": "2 799"
+    },
+    {
+      "id": 401,
+      "name": "Лампада медная",
+      "url": "catalog/domashnyaya/lampada-mednaya/",
+      "price": 3200,
+      "pricePrint": "3 200"
+    },
+    {
+      "id": 402,
+      "name": "Подсвечник деревянный",
+      "url": "catalog/domashnyaya/podsvechnik-derevyannyy/",
+      "price": 980,
+      "pricePrint": "980"
+    },
+    {
+      "id": 501,
+      "name": "Свечи восковые (набор 10 шт.)",
+      "url": "catalog/svechi/svechi-voskovye-nabor/",
+      "price": 450,
+      "pricePrint": "450"
+    },
+    {
+      "id": 502,
+      "name": "Ладан храмовой",
+      "url": "catalog/svechi/ladan-hramovoy/",
+      "price": 620,
+      "pricePrint": "620"
+    },
+    {
+      "id": 601,
+      "name": "Лестовка кожаная",
+      "url": "catalog/lestovki/lestovka-kozhanaya/",
+      "price": 890,
+      "pricePrint": "890"
+    },
+    {
+      "id": 602,
+      "name": "Лестовка бисерная",
+      "url": "catalog/lestovki/lestovka-bisernaya/",
+      "price": 1150,
+      "pricePrint": "1 150"
+    },
+    {
+      "id": 701,
+      "name": "Крест серебряный",
+      "url": "catalog/kresty/krest-serebryanyy/",
+      "price": 5600,
+      "pricePrint": "5 600"
+    },
+    {
+      "id": 702,
+      "name": "Крест деревянный",
+      "url": "catalog/kresty/krest-derevyannyy/",
+      "price": 420,
+      "pricePrint": "420"
+    },
+    {
+      "id": 801,
+      "name": "Кадило медное",
+      "url": "catalog/utvar/kadilo-mednoe/",
+      "price": 8900,
+      "pricePrint": "8 900"
+    },
+    {
+      "id": 802,
+      "name": "Стихарь монашеский",
+      "url": "catalog/utvar/stihar-monashskiy/",
+      "price": 12400,
+      "pricePrint": "12 400"
+    }
+  ]
+}
